@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Окт 27 2018 г., 14:42
+-- Время создания: Окт 31 2018 г., 18:21
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.2.0
 
@@ -193,7 +193,29 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2015_12_11_000000_create_users_logs_table', 5),
 (10, '2016_03_14_000000_update_menus_table', 5),
 (11, '2018_10_27_090217_create_category_table', 6),
-(12, '2018_10_27_091854_create_product_table', 7);
+(12, '2018_10_27_091854_create_product_table', 7),
+(13, '2018_10_31_155729_create_orders_table', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `town` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `adress` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `obl` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postIndex` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -217,6 +239,7 @@ CREATE TABLE `product` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `body` text COLLATE utf8mb4_unicode_ci,
+  `price` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -229,13 +252,13 @@ CREATE TABLE `product` (
 -- Дамп данных таблицы `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `body`, `picture`, `category_id`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Академический вокал Индивидуальные занятия', '<p>Продолжительность урока 45 минут 1-2 раза в неделю</p>', '1540621889-academ_vocal.jpg', 1, 1, '2018-10-27 06:31:29', '2018-10-27 10:23:44', NULL),
-(2, 'Академический вокал Групповые занятия', '<p>Продолжительность урока 1 час 30 минут.</p>\r\n\r\n<p>3-5 человек в группе</p>', '1540622049-vocal_academy_group.jpg', 2, 1, '2018-10-27 06:34:09', '2018-10-27 10:23:31', NULL),
-(3, 'Уроки эстрадного вокала Индивидуальные', '<p>Продолжительность занятия 45 минут</p>\r\n\r\n<p>1-2 раза в неделю</p>\r\n\r\n<p>&nbsp;</p>', '1540622224-estrada.jpg', 2, 1, '2018-10-27 06:37:05', '2018-10-27 06:37:05', NULL),
-(4, 'Уроки эстрадного вокала Групповые', '<p>Продолжительность урока 1 час 30 минут</p>\r\n\r\n<p>Группа - 3-5 человек</p>', '1540622284-estr_group.jpg', 2, 1, '2018-10-27 06:38:04', '2018-10-27 06:38:04', NULL),
-(5, 'Уроки сольфеджио Индивидуальные', '<p>Продолжительность урока 45 минут</p>\r\n\r\n<p>Удаленно (skype) и аудиторные занятия</p>', '1540622425-solf.jpg', 1, 2, '2018-10-27 06:39:38', '2018-10-27 06:40:25', NULL),
-(6, 'Уроки сольфеджио групповые', '<p>Продолжительность урока 1 час 30 минут</p>\r\n\r\n<p>Тип занятий: аудиторные</p>', '1540622517-solf_group.jpg', 1, 2, '2018-10-27 06:41:57', '2018-10-27 06:41:57', NULL);
+INSERT INTO `product` (`id`, `name`, `body`, `price`, `picture`, `category_id`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Академический вокал Индивидуальные занятия', '<p>Продолжительность урока 45 минут 1-2 раза в неделю</p>', '45', '1540621889-academ_vocal.jpg', 1, 1, '2018-10-27 06:31:29', '2018-10-27 10:23:44', NULL),
+(2, 'Академический вокал Групповые занятия', '<p>Продолжительность урока 1 час 30 минут.</p>\r\n\r\n<p>3-5 человек в группе</p>', '12', '1540622049-vocal_academy_group.jpg', 2, 1, '2018-10-27 06:34:09', '2018-10-27 10:23:31', NULL),
+(3, 'Уроки эстрадного вокала Индивидуальные', '<p>Продолжительность занятия 45 минут</p>\r\n\r\n<p>1-2 раза в неделю</p>\r\n\r\n<p>&nbsp;</p>', '78', '1540622224-estrada.jpg', 2, 1, '2018-10-27 06:37:05', '2018-10-27 06:37:05', NULL),
+(4, 'Уроки эстрадного вокала Групповые', '<p>Продолжительность урока 1 час 30 минут</p>\r\n\r\n<p>Группа - 3-5 человек</p>', '69', '1540622284-estr_group.jpg', 2, 1, '2018-10-27 06:38:04', '2018-10-27 06:38:04', NULL),
+(5, 'Уроки сольфеджио Индивидуальные', '<p>Продолжительность урока 45 минут</p>\r\n\r\n<p>Удаленно (skype) и аудиторные занятия</p>', '78', '1540622425-solf.jpg', 1, 2, '2018-10-27 06:39:38', '2018-10-27 06:40:25', NULL),
+(6, 'Уроки сольфеджио групповые', '<p>Продолжительность урока 1 час 30 минут</p>\r\n\r\n<p>Тип занятий: аудиторные</p>', '12', '1540622517-solf_group.jpg', 1, 2, '2018-10-27 06:41:57', '2018-10-27 06:41:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -368,6 +391,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -436,7 +465,13 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT для таблицы `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT для таблицы `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
