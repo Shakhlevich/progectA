@@ -1,0 +1,91 @@
+body{
+	margin:0;
+	padding:0;
+}
+#header{
+	height:195px;
+	background: url(../img/fon.jpg);
+}
+#logo{
+	float:right;
+	
+}
+#logotext{
+	float:left;
+	padding:10px;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+	padding-top:0px;
+	margin-top:0px;
+	font-size: 65px;
+}
+
+#saidbar a{
+	background-color: #800000;
+	color: white;
+	border: 0;
+	border-radius: 10px;
+}
+
+#saidbar a:hover{
+	background-color: #FFDB58;
+	color: #800000;
+	border: 0;
+	border-radius: 10px;
+
+}
+
+#basket{
+	color: #0066cc;
+}
+
+
+.topmenu{
+	display:flex;
+	width:100%;
+	margin: 0 auto;
+}
+.topmenu a{
+	flex: 1;
+	text-decoration: none;
+	background: #FFDB58;
+	color: #800000;
+	text-align: center;
+	padding: 15px 0;
+	border-right: solid 1px white;
+	border-radius: 0 0 20px 20px;
+	font-size: 20px;
+}
+.topmenu a:hover{
+	background: #800000;
+	color: #FFDB58;
+border-radius: 0 0 20px 20px;
+}
+#footer{
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	color: white;
+	background: #800000;
+	
+}
+
+
+.product{
+	float:left;
+	margin-right: 10px;
+	
+	
+}
+
+@media screen and (max-width: 600px){
+	#header{
+		height:100px;
+	}
+	#logo{
+		display: none;
+	}
+	.topmenu{
+		flex-direction: column;
+	}
+}
