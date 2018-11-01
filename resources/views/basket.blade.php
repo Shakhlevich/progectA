@@ -8,6 +8,19 @@
 
 <h2 id="basket">Моя корзина</h2>
   		<div class="maintext"> 
+		
+	@if(count($errors) > 0)	\
+	<div class="alert alert-danger">
+	<strong>Whoops!</strong>Найдены следующие ошибки <br><br>
+	<ul>
+		@foreach ($errors->all() as $error)
+		<li>
+		{{$error}}
+		</li>
+		@endforeach
+		</ul>
+	</div>
+	@endif
 <form  method="post" action="{{asset('order')}}">
 @csrf
 		<table class="table table-bordered table-striped" width="100%">
@@ -83,21 +96,53 @@
   <div class="form-row" align="left">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+	  
+	  @if($errors->has('email'))
+		  <span class="help-block">
+	  <strong> {{$errors->first('email')}}</strong>
+	  </span>
+	  @endif
+	  
+      <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email" value="{{old('email')}}">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Фамилия, Имя</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Фамилия, Имя">
+      
+	  <label for="inputPassword4">Фамилия, Имя</label>
+      
+	  @if($errors->has('fio'))
+		  <span class="help-block">
+	  <strong> {{$errors->first('fio')}}</strong>
+	  </span>
+	  @endif
+	  
+	  <input name="fio" type="text" class="form-control" id="inputName" placeholder="Фамилия Имя" value="{{old('fio')}}" >
     </div><br>
      <div class="form-group col-md-6">
+	 
     <label for="inputAddress2">Телефон</label>
-    <input type="text" class="form-control" id="inputPhone" placeholder="Номер телефона">
+    
+	@if($errors->has('phone'))
+		  <span class="help-block">
+	  <strong> {{$errors->first('phone')}}</strong>
+	   </span>
+	  @endif
+	  
+	<input type="text" class="form-control" name="phone" id="inputPhone" placeholder="Номер телефона">
   </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">
+	
+
       <label for="inputCity">Населенный пункт</label>
-      <input type="text" class="form-control" id="inputCity">
+	  
+      	 @if($errors->has('town'))
+		  <span class="help-block">
+	  <strong> {{$errors->first('town')}}</strong>
+		</span>
+	  @endif
+	  
+	  <input type="text" name="town" class="form-control" id="inputCity">
     </div>
   <div class="form-group col-md-6">
     <label for="inputAddress">Адрес</label>
@@ -114,7 +159,14 @@
     </div>
     <div class="form-group col-md-4">
       <label for="inputZip">Почтовый индекс</label>
-      <input type="text" class="form-control" id="Почтовый индекс">
+      
+	   @if($errors->has('postindex'))
+		  <span class="help-block">
+	  <strong> {{$errors->first('postindex')}}</strong>
+			</span>
+	  @endif
+	  
+	  <input type="text" name="postindex" class="form-control" id="Почтовый индекс">
     </div>
    
    

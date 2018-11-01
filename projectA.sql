@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Время создания: Окт 31 2018 г., 18:21
+-- Время создания: Ноя 01 2018 г., 14:15
 -- Версия сервера: 5.7.20
 -- Версия PHP: 7.2.0
 
@@ -144,7 +144,8 @@ INSERT INTO `menus` (`id`, `position`, `menu_type`, `icon`, `name`, `title`, `pa
 (1, NULL, 0, NULL, 'User', 'User', NULL, NULL, NULL),
 (2, NULL, 0, NULL, 'Role', 'Role', NULL, NULL, NULL),
 (3, 0, 1, 'fa-database', 'Category', 'Categories', NULL, '2018-10-27 06:02:17', '2018-10-27 06:02:17'),
-(4, 0, 1, 'fa-database', 'Product', 'Products', NULL, '2018-10-27 06:18:54', '2018-10-27 06:18:54');
+(4, 0, 1, 'fa-database', 'Product', 'Products', NULL, '2018-10-27 06:18:54', '2018-10-27 06:18:54'),
+(5, 0, 3, 'fa-database', 'Order', 'Orders', NULL, '2018-11-01 08:57:08', '2018-11-01 08:57:08');
 
 -- --------------------------------------------------------
 
@@ -163,7 +164,8 @@ CREATE TABLE `menu_role` (
 
 INSERT INTO `menu_role` (`menu_id`, `role_id`) VALUES
 (3, 1),
-(4, 1);
+(4, 1),
+(5, 1);
 
 -- --------------------------------------------------------
 
@@ -205,17 +207,30 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` int(10) UNSIGNED NOT NULL,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `town` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `adress` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `obl` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `postIndex` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `town` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adress` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `obl` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postindex` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT INTO `orders` (`id`, `body`, `email`, `phone`, `name`, `town`, `adress`, `obl`, `postindex`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'a:1:{i:1;s:1:\"1\";}', 'etagg@yndex.ru', '445849439993', NULL, 'sdhdgdgh', NULL, NULL, '123456', 2, '2018-11-01 09:39:26', '2018-11-01 09:39:26'),
+(2, 'a:1:{i:1;s:1:\"1\";}', 'etagg@yndex.ru', '445849439993', NULL, 'sdhdgdgh', NULL, NULL, '123456', 2, '2018-11-01 09:39:50', '2018-11-01 09:39:50'),
+(3, 'a:1:{i:1;s:1:\"1\";}', 'etagg@yndex.ru', '445849439993', NULL, 'sdhdgdgh', NULL, NULL, '123456', 2, '2018-11-01 09:41:16', '2018-11-01 09:41:16'),
+(4, 'a:1:{i:1;s:1:\"1\";}', 'etagg@yndex.ru', '445849433999', NULL, 'sdhdgdgh', NULL, NULL, '123456', 2, '2018-11-01 11:11:32', '2018-11-01 11:11:32'),
+(5, 'a:1:{i:1;s:1:\"1\";}', 'etagg@yndex.ru', '445849433999', NULL, 'sdhdgdgh', NULL, NULL, '123456', 2, '2018-11-01 11:12:08', '2018-11-01 11:12:08'),
+(6, 'a:1:{i:1;s:1:\"1\";}', 'etagg@yndex.ru', '445849433999', NULL, 'sdhdgdgh', NULL, NULL, '123456', 2, '2018-11-01 11:12:15', '2018-11-01 11:12:15'),
+(7, 'a:1:{i:1;s:1:\"1\";}', 'etagg@yndex.ru', '445849433999', NULL, 'sdhdgdgh', NULL, NULL, '123456', 2, '2018-11-01 11:12:31', '2018-11-01 11:12:31');
 
 -- --------------------------------------------------------
 
@@ -459,7 +474,7 @@ ALTER TABLE `main_texts`
 -- AUTO_INCREMENT для таблицы `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `migrations`
@@ -471,7 +486,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `product`
