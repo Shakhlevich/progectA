@@ -23,7 +23,7 @@
 	
 	 @guest
                            
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             
                             
                                 @if (Route::has('register'))
@@ -32,7 +32,7 @@
                             
                         @else
                             
-                                <a href="{{asset('home')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               <a href="{{asset('home')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} 
                                 </a>
 
@@ -45,7 +45,7 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
-                                    </form>
+                                    </form> 
                                 
                             
                         @endguest

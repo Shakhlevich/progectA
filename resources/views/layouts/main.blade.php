@@ -30,7 +30,7 @@
 	<a href={{asset('Feedback')}}>Отзывы</a>
 	 @guest
                            
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                         <!--      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             
                             
                                 @if (Route::has('register'))
@@ -52,7 +52,7 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
-                                    </form>
+                                    </form> -->
                                 
                             
                         @endguest
