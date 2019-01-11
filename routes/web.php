@@ -3,6 +3,7 @@
 Route::group(['middleware'=>['authuser']],
 	function(){
 Route::get('basket', 'BasketController@getIndex');
+Route::get('ajax/parse/catalog', 'Admin\AjaxParseController@getCatalog');
 	}
 );
 Route::get('/', 'BaseController@getIndex');
@@ -20,7 +21,9 @@ Route::get('basket', 'BasketController@getAll');
 Route::get('basket/dell/{id}', 'BasketController@getDell');
 Route::get('basket/clear', 'BasketController@getClear');
 Route::post('order','OrderController@postOrder');
-Route::get('adin/order/one/{id}', 'Admin\OrderController@getIndex');
-Route::post('ajax', 'AjaxController@postIndex');
+Route::get('admin/order/one/{id}', 'Admin\OrderController@getIndex');
+
+
+ 
 //всегда последний
 		Route::get('{url}', 'StaticController@getIndex');
