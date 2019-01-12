@@ -1,3 +1,5 @@
+<?php
+namespace App\Parser;
 namespace App\Parser;
 
 use Symfony\Component\DomCrawler\Crawler;
@@ -21,7 +23,11 @@ class Aliexpress implements ParseContract
         //$ff = '';
         $file = file_get_contents($url);
         $this->crawler = new Crawler($file);
-		$body=$this->crawler->filter('body')->html();
-		echo $body;
+		$this->crawler->filter('.list-item')->each(function(Crawler $node, $i){
+		$name = $node->text();
+		$pic = $node-> filter('img')->attr('src');
+		echo $name;
+		echo ' - '.$pic;
+});
     }
 }

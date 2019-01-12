@@ -10,7 +10,7 @@ var id = $(this).attr('data-id');
   data: 'id='+id+'&url='+url,
   url: '/ajax/parse/catalog',
   beforeSend: function(){
-   $('#empty').html('<img src="../media/img/banan.gif">');
+   $('#empty').html('<img src="/media/img/banan.gif" width="100px">');
   },
   success: function(data){
    $('#empty').html(data);    
